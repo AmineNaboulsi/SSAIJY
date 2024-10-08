@@ -1,11 +1,11 @@
 
-const { mongoose } = require('mongoose');
-const uri = "mongodb+srv://Dilaly0:du9ROMFGqw4UucTh@aijy.ghurx.mongodb.net/AIJY?retryWrites=true&w=majority&appName=AIJY";
-const ProductRouter = require('./Router/productRouter') ;
+const { mongoose } = require('mongoose');const ProductRouter = require('./Router/productRouter') ;
 const cors = require('cors');
 const express = require('express') ;
 const app = express() ;
 app.use(cors());
+const dotenv = require('dotenv')
+dotenv.config()
 /* const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -27,7 +27,7 @@ async function run() {
   }
 }
 run().catch(console.dir); */
-mongoose.connect(uri ,{
+mongoose.connect(process.env.URIDB ,{
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -44,4 +44,4 @@ app.get('/',(req,res)=>{
 app.use('/P' , ProductRouter)
 
 
-app.listen(3040 , ()=>{console.log('working successfuly')}) ; 
+app.listen(3044 , ()=>{console.log('working successfuly')}) ; 
