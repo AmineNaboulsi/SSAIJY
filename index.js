@@ -38,8 +38,33 @@ mongoose.connect(process.env.URIDB ,{
   console.error('Error connecting to MongoDB:', err.message);
 });
 /*------------------------------------------------------Listen-----------------------------------------------------*/ 
-app.get('/',(req,res)=>{
-   res.json({message : 'libiiti get'})
+app.get('/taskslist',(req,res)=>{
+   res.json([
+    {
+        "link": "https://intranet.youcode.ma/storage/users/profile/thumbnail/1125-1727859974.JPG",
+        "name": "Amine Naboulsi",
+        "task": "Outside",
+        "rate": 20
+    },
+    {
+        "link": "https://intranet.youcode.ma/storage/users/profile/thumbnail/1090-1727859809.JPG",
+        "name": "Jawad Boulmal",
+        "task": "Washing",
+        "rate": 100
+    },
+    {
+        "link": "https://intranet.youcode.ma/storage/users/profile/thumbnail/1127-1727859974.JPG",
+        "name": "Ismail Dilali",
+        "task": "Cleaning",
+        "rate": 50
+    },
+    {
+        "link": "https://intranet.youcode.ma/storage/users/profile/thumbnail/1086-1727859809.JPG",
+        "name": "Youness Kamal",
+        "task": "Cooking",
+        "rate": 55
+    }
+])
 })
 app.use('/P' , ProductRouter)
 
