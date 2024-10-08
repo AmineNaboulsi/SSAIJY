@@ -2,7 +2,17 @@ const ModelCaisee = require("../Models/Caisse")
 
 const getCaisseAmonth = async(req , res) => {
     const getdata = await ModelCaisee.findOne({amonth : {$gte : 0 }});
-    res.json(getdata)
+    const todaydata = await ModelCaisee.find(
+        {
+            amonth : {$lte : 0 } ,
+            productDate : new Date().setHours(0, 0, 0, 0) 
+        });
+    const totalTodayAmount = todaydata.reduce((sum, entry) => sum + entry.total, 0);
+
+    res.json({
+        amonth : getdata.amonth ,
+        toodayamonth : totalTodayAmount
+    })
 }
 const getCaisseList = async(req , res) => {
     const getdata = await ModelCaisee.find({amonth : {$lte : -1 }});
