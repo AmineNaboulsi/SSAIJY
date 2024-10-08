@@ -14,4 +14,3 @@ const productSchema = new mongoose.Schema({
 const model = mongoose.model('Product', productSchema);
 module.exports = model
 
-// Now you can use `Product` as your model

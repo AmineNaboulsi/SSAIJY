@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../Models/product');  // Make sure the path is correct
-
+const CaisseM = require('../Models/Caisse')
 router.get('/AddProduct', async (req, res) => {
   const {pname  , pprice } = req.query  ;
   if(!pname || !pprice){
@@ -18,7 +18,7 @@ router.get('/AddProduct', async (req, res) => {
 
         // Save the product in MongoDB
         await Product1.save();
-
+        
         // Send response
         res.json({ message: 'Product added successfully!' });
     } catch (error) {

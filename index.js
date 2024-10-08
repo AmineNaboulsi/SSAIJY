@@ -1,5 +1,8 @@
 
-const { mongoose } = require('mongoose');const ProductRouter = require('./Router/productRouter') ;
+const { mongoose } = require('mongoose');
+const ProductRouter = require('./Router/productRouter') ;
+const CaisseRouter = require('./Router/CaisseRouter') ;
+
 const cors = require('cors');
 const express = require('express') ;
 const app = express() ;
@@ -67,6 +70,7 @@ app.get('/taskslist',(req,res)=>{
 ])
 })
 app.use('/P' , ProductRouter)
+app.use('/c' , CaisseRouter)
 
 
 app.listen(3044 , ()=>{console.log('working successfuly')}) ; 
