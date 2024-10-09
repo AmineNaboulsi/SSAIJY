@@ -1,7 +1,9 @@
 const moneyMongoose = require('mongoose')
 
 const CaisseShema = new moneyMongoose.Schema({
-  amonth : Number ,
+  amonth : {
+    type:moneyMongoose.Types.Decimal128
+  } ,
   deposed_date : Date ,
   amonthDeposed : Number,
 });

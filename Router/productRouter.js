@@ -39,8 +39,17 @@ router.get('/AddProduct', async (req, res) => {
 });
 router.get('/getProduct', async (req, res) => {
     try {
+        let startOfDay = new Date();
+        startOfDay.setHours(0, 0, 0, 0); 
+        let endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
         // Create a new Product instance
-        const Productlist = await Product.find();
+        const Productlist = await Product.find({
+            productDate: {
+                $gte: startOfDay,
+                $lt: endOfDay
+            }
+        });
         // Send response
         res.json(Productlist);
     } catch (error) {
