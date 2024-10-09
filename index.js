@@ -30,10 +30,7 @@ async function run() {
   }
 }
 run().catch(console.dir); */
-mongoose.connect(process.env.URIDB ,{
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.URIDB)
 .then(() => {
   console.log('Connected to MongoDB successfully!');
 })
